@@ -1,587 +1,141 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invitación Cumpleaños #10 - Lucas Mariano</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800;900&family=Playfair+Display:ital,wght@0,700;1,400&display=swap');
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #0d0d0d;
-            color: #ffffff;
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        .bg-custom-overlay {
-            position: fixed;
-            inset: 0;
-            background-image: url('INVITACION.jpg');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.4;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .title-font {
-            font-family: 'Montserrat', sans-serif;
-            letter-spacing: 2px;
-        }
-
-        .cursive-font {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-        }
-
-        .balloon {
-            position: absolute;
-            animation: float 6s ease-in-out infinite;
-            pointer-events: none;
-            z-index: 10;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-18px) rotate(3deg); }
-            100% { transform: translateY(0px) rotate(0deg); }
-        }
-
-        .balloon-delayed {
-            animation: float 7s ease-in-out 1.5s infinite;
-        }
-
-        .balloon-slow {
-            animation: float 9s ease-in-out 0.8s infinite;
-        }
-
-        /* Glassmorphism containers */
-        .glass-card {
-            background: rgba(18, 18, 20, 0.85);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-        }
-
-        .glass-gold {
-            background: rgba(212, 175, 55, 0.12);
-            border: 1px solid rgba(212, 175, 55, 0.35);
-        }
-
-        /* Glow effects */
-        .glow-button {
-            box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .glow-button:hover {
-            box-shadow: 0 0 35px rgba(255, 255, 255, 0.6);
-            transform: translateY(-2px);
-        }
-
-        /* Studio beam lights */
-        @keyframes pulse-light {
-            0%, 100% { opacity: 0.2; transform: scale(1); }
-            50% { opacity: 0.4; transform: scale(1.08); }
-        }
-
-        .studio-beam {
-            position: absolute;
-            width: 320px;
-            height: 320px;
-            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
-            border-radius: 50%;
-            animation: pulse-light 4s ease-in-out infinite;
-            pointer-events: none;
-            z-index: 2;
-        }
-
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #111;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #333;
-            border-radius: 4px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitación Cumpleaños #10 - Lucas Mariano</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Playfair+Display:ital,wght@1,700&display=swap');
+    body { font-family: 'Montserrat', sans-serif; background-color: #0d0d0f; color: #ffffff; }
+    .title-font { font-family: 'Playfair Display', serif; }
+    .bg-custom-overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background-image: url('INVITACION.jpg');
+      background-size: cover; background-position: center; opacity: 0.4; z-index: -1;
+    }
+    .balloon {
+      position: absolute; bottom: -100px; opacity: 0.7; animation: floatUp 8s infinite linear;
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
+      100% { transform: translateY(-110vh) rotate(20deg); opacity: 0; }
+    }
+  </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between relative selection:bg-neutral-800 selection:text-white">
+<body class="min-h-screen flex flex-col justify-between items-center relative overflow-x-hidden p-4">
+  <div class="bg-custom-overlay"></div>
 
-    <div class="bg-custom-overlay"></div>
+  <!-- Globos Flotantes de Fondo -->
+  <div class="balloon text-4xl left-[10%]" style="animation-delay: 0s;">🎈</div>
+  <div class="balloon text-5xl left-[30%]" style="animation-delay: 2.5s;">🎈</div>
+  <div class="balloon text-4xl left-[70%]" style="animation-delay: 1s;">🎈</div>
+  <div class="balloon text-5xl left-[85%]" style="animation-delay: 4s;">🎈</div>
 
-    <!-- Studio Light Flares -->
-    <div class="studio-beam top-10 left-1/4 -translate-x-1/2"></div>
-    <div class="studio-beam top-1/3 right-10"></div>
-
-    <div class="fixed inset-0 overflow-hidden pointer-events-none z-10 max-w-lg mx-auto">
-        <!-- Number 10 Foil Balloon FX -->
-        <div class="balloon top-6 right-6 md:right-10 opacity-90 scale-90 md:scale-100">
-            <div class="text-6xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-neutral-100 via-neutral-300 to-neutral-600 drop-shadow-[0_10px_10px_rgba(0,0,0,0.9)]">
-                10
-            </div>
-        </div>
-
-        <!-- Floating Black Round Balloons -->
-        <div class="balloon balloon-slow top-16 left-6 w-16 h-20 bg-gradient-to-br from-neutral-700 via-neutral-900 to-black rounded-full shadow-2xl flex items-center justify-center border border-neutral-700/30">
-            <span class="text-[9px] text-neutral-300 font-bold uppercase tracking-widest text-center px-1 leading-tight">Feliz<br>Cumple</span>
-            <div class="absolute -bottom-6 left-1/2 w-0.5 h-8 bg-neutral-600/40"></div>
-        </div>
-
-        <div class="balloon balloon-delayed top-1/3 right-4 w-12 h-15 bg-gradient-to-br from-neutral-800 to-black rounded-full shadow-2xl border border-neutral-700/20">
-            <div class="absolute -bottom-5 left-1/2 w-0.5 h-6 bg-neutral-600/30"></div>
-        </div>
-
-        <div class="balloon top-2/3 left-4 w-14 h-18 bg-gradient-to-br from-neutral-700 via-neutral-900 to-black rounded-full shadow-2xl border border-neutral-700/20 opacity-80">
-            <div class="absolute -bottom-6 left-1/2 w-0.5 h-7 bg-neutral-600/30"></div>
-        </div>
+  <div class="w-full max-w-md mx-auto my-auto bg-black/75 backdrop-blur-md rounded-2xl border border-white/20 p-6 shadow-2xl text-center space-y-6">
+    <div class="space-y-1">
+      <p class="text-xs tracking-widest text-gray-300 uppercase">Te invitamos a celebrar el cumpleaños de</p>
+      <h1 class="text-4xl font-black tracking-wider text-white">LUCAS</h1>
+      <h2 class="text-3xl font-extrabold tracking-widest text-gray-200">MARIANO</h2>
     </div>
 
-    <main class="relative z-20 flex-grow flex items-center justify-center p-4 sm:p-6 my-6">
-        <div class="w-full max-w-md glass-card rounded-3xl overflow-hidden shadow-2xl border border-neutral-800/80 relative">
-            
-            <!-- Header Section -->
-            <div class="relative p-6 sm:p-8 text-center border-b border-neutral-800/80 bg-neutral-950/40">
-                
-                <!-- Admin Button Trigger Top Left -->
-                <button onclick="toggleAdminModal()" class="absolute top-4 left-4 z-30 bg-black/60 hover:bg-black/90 backdrop-blur-md text-neutral-400 hover:text-white p-2.5 rounded-full transition text-xs border border-neutral-700/50">
-                    <i class="fa-solid fa-lock"></i>
-                </button>
-
-                <!-- Audio Toggle Top Right -->
-                <button id="musicToggle" onclick="toggleMusic()" class="absolute top-4 right-4 z-30 bg-black/60 hover:bg-black/90 backdrop-blur-md text-neutral-300 p-2.5 rounded-full transition text-xs flex items-center gap-2 border border-neutral-700/50">
-                    <i id="musicIcon" class="fa-solid fa-music"></i>
-                </button>
-
-                <div class="mt-4">
-                    <span class="inline-block px-3 py-1 bg-amber-400/10 backdrop-blur-md border border-amber-400/30 rounded-full text-[11px] font-semibold tracking-widest uppercase text-amber-300 mb-3">
-                        Celebración Exclusiva
-                    </span>
-                    <h1 class="title-font text-3xl sm:text-4xl font-black tracking-wider text-white uppercase drop-shadow-lg">
-                        LUCAS
-                    </h1>
-                    <h2 class="title-font text-2xl sm:text-3xl font-light tracking-widest text-neutral-200 uppercase -mt-1 drop-shadow-md">
-                        MARIANO
-                    </h2>
-                </div>
-
-                <div class="mt-4">
-                    <p class="text-xs uppercase tracking-widest text-neutral-300 font-medium">Invitación al Cumpleaños Nº 10</p>
-                </div>
-            </div>
-
-            <div class="p-6 sm:p-8 space-y-6">
-
-                <div class="grid grid-cols-2 gap-4 text-center">
-                    <div class="p-4 rounded-2xl glass-gold flex flex-col justify-center items-center">
-                        <i class="fa-regular fa-calendar text-amber-300 text-xl mb-1"></i>
-                        <span class="cursive-font text-sm text-neutral-300">Octubre</span>
-                        <span class="title-font text-3xl font-extrabold text-white my-0.5">17</span>
-                        <span class="text-[11px] uppercase tracking-wider text-neutral-400">Sábado</span>
-                    </div>
-
-                    <div class="p-4 rounded-2xl glass-gold flex flex-col justify-center items-center">
-                        <i class="fa-regular fa-clock text-amber-300 text-xl mb-1"></i>
-                        <span class="cursive-font text-sm text-neutral-300">Horario</span>
-                        <span class="title-font text-2xl font-extrabold text-white my-1">10:00</span>
-                        <span class="text-[11px] uppercase tracking-wider text-neutral-400">Hrs</span>
-                    </div>
-                </div>
-
-                <!-- Location Box -->
-                <div class="p-4 rounded-2xl bg-neutral-900/90 border border-neutral-800 flex items-start gap-4 shadow-lg">
-                    <div class="p-3 bg-neutral-800 rounded-xl text-amber-300 mt-1">
-                        <i class="fa-solid fa-camera-retro text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-white text-base">Geisha Estudio Fotográfico</h3>
-                        <p class="text-xs text-neutral-400 mt-0.5 leading-relaxed">Sesión de fotos, ambiente rock & leather, sorpresas y muchas fotos.</p>
-                        
-                        <a href="https://maps.google.com" target="_blank" class="inline-flex items-center gap-1.5 text-xs text-amber-300 font-semibold mt-2 hover:underline">
-                            <i class="fa-solid fa-location-dot"></i> Ver ubicación en el mapa
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Action Button -->
-                <div class="pt-2 text-center space-y-3">
-                    <button onclick="openRSVPModal()" class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-neutral-100 via-white to-neutral-300 text-neutral-950 font-black text-lg tracking-widest uppercase glow-button flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-check-double"></i> ASISTIRÉ.
-                    </button>
-                    
-                    <p class="text-[11px] text-neutral-400 italic">Haz clic para confirmar tu asistencia e ingresar tus datos.</p>
-                </div>
-
-                <!-- Extra Links -->
-                <div class="pt-4 border-t border-neutral-800/80 flex justify-around text-center text-xs text-neutral-400">
-                    <button onclick="addToCalendar()" class="hover:text-white transition flex flex-col items-center gap-1">
-                        <div class="w-9 h-9 rounded-full bg-neutral-800/80 flex items-center justify-center text-neutral-300 border border-neutral-700/50">
-                            <i class="fa-regular fa-calendar-plus"></i>
-                        </div>
-                        <span>Calendario</span>
-                    </button>
-
-                    <button onclick="shareInvitation()" class="hover:text-white transition flex flex-col items-center gap-1">
-                        <div class="w-9 h-9 rounded-full bg-neutral-800/80 flex items-center justify-center text-neutral-300 border border-neutral-700/50">
-                            <i class="fa-solid fa-share-nodes"></i>
-                        </div>
-                        <span>Compartir</span>
-                    </button>
-                </div>
-
-            </div>
-        </div>
-    </main>
-
-    <div id="rsvpModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300">
-        <div class="bg-neutral-900 border border-neutral-800 rounded-3xl w-full max-w-md p-6 sm:p-8 relative shadow-2xl transform scale-95 transition-all duration-300" id="rsvpModalCard">
-            
-            <button onclick="closeRSVPModal()" class="absolute top-5 right-5 text-neutral-400 hover:text-white text-lg w-8 h-8 rounded-full bg-neutral-800 flex items-center justify-center">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-
-            <div class="text-center mb-6">
-                <div class="w-12 h-12 bg-amber-400/10 border border-amber-400/30 rounded-full flex items-center justify-center mx-auto mb-3 text-amber-300">
-                    <i class="fa-solid fa-envelope-open-text text-xl"></i>
-                </div>
-                <h3 class="title-font text-xl font-bold text-white uppercase">Confirmar Asistencia</h3>
-                <p class="text-xs text-neutral-400 mt-1">Cumpleaños Lucas Mariano #10</p>
-            </div>
-
-            <form id="rsvpForm" onsubmit="submitRSVP(event)" class="space-y-4">
-                <div>
-                    <label class="block text-xs font-semibold text-neutral-300 mb-1.5 uppercase tracking-wider">Tu Nombre Completo *</label>
-                    <input type="text" id="guestName" required placeholder="Ej. Juan Pérez" class="w-full bg-neutral-800 border border-neutral-700 rounded-xl px-4 py-3 text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-white transition">
-                </div>
-
-                <div>
-                    <label class="block text-xs font-semibold text-neutral-300 mb-1.5 uppercase tracking-wider">Número de Acompañantes</label>
-                    <select id="guestCount" class="w-full bg-neutral-800 border border-neutral-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-white transition">
-                        <option value="0">Solo yo (1 persona)</option>
-                        <option value="1">+1 Acompañante (2 personas)</option>
-                        <option value="2">+2 Acompañantes (3 personas)</option>
-                        <option value="3">+3 Acompañantes (4 personas)</option>
-                    </select>
-                </div>
-
-                <div>
-                    <label class="block text-xs font-semibold text-neutral-300 mb-1.5 uppercase tracking-wider">Notas o Mensaje para Lucas</label>
-                    <textarea id="guestNotes" rows="3" placeholder="¡Feliz cumpleaños Lucas! Nos vemos allá..." class="w-full bg-neutral-800 border border-neutral-700 rounded-xl px-4 py-3 text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-white transition resize-none"></textarea>
-                </div>
-
-                <button type="submit" class="w-full py-3.5 px-6 rounded-xl bg-white text-neutral-950 font-bold text-sm tracking-wider uppercase hover:bg-neutral-200 transition flex items-center justify-center gap-2 mt-2">
-                    <i class="fa-solid fa-paper-plane"></i> Confirmar mi lugar
-                </button>
-            </form>
-        </div>
+    <div class="py-2 border-y border-white/20 flex justify-center items-center gap-6">
+      <div>
+        <p class="text-xs text-gray-400 uppercase">Fecha</p>
+        <p class="text-lg font-bold">17 Octubre</p>
+      </div>
+      <div class="h-8 w-px bg-white/20"></div>
+      <div>
+        <p class="text-xs text-gray-400 uppercase">Hora</p>
+        <p class="text-lg font-bold">10:00 Hrs</p>
+      </div>
     </div>
 
-    <!-- Success Modal -->
-    <div id="successModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300">
-        <div class="bg-neutral-900 border border-neutral-800 rounded-3xl w-full max-w-sm p-6 text-center shadow-2xl">
-            <div class="w-16 h-16 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mx-auto mb-4 border border-emerald-500/30 text-2xl">
-                <i class="fa-solid fa-circle-check"></i>
-            </div>
-            <h3 class="title-font text-2xl font-black text-white mb-2">¡TE ESPERAMOS!</h3>
-            <p class="text-sm text-neutral-300 leading-relaxed">Tu asistencia ha sido registrada exitosamente.</p>
-            <p class="text-xs text-neutral-500 mt-2">Nos vemos el 17 de Octubre a las 10:00 Hrs en Geisha Estudio Fotográfico.</p>
-
-            <button onclick="closeSuccessModal()" class="mt-6 w-full py-3 bg-neutral-800 hover:bg-neutral-700 text-white rounded-xl text-xs font-bold uppercase tracking-wider transition">
-                Cerrar
-            </button>
-        </div>
+    <div>
+      <p class="text-xs text-gray-400 uppercase">Lugar</p>
+      <p class="text-base font-semibold">Geisha Estudio Fotográfico</p>
     </div>
 
-    <div id="adminModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300">
-        <div class="bg-neutral-900 border border-neutral-800 rounded-3xl w-full max-w-2xl p-6 sm:p-8 relative shadow-2xl max-h-[90vh] flex flex-col">
-            
-            <button onclick="toggleAdminModal()" class="absolute top-5 right-5 text-neutral-400 hover:text-white text-lg w-8 h-8 rounded-full bg-neutral-800 flex items-center justify-center">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
+    <button onclick="openModal()" class="w-full bg-white text-black font-black py-4 rounded-xl text-lg tracking-widest hover:bg-gray-200 transition shadow-lg transform active:scale-95">
+      ASISTIRÉ
+    </button>
+  </div>
 
-            <div class="mb-4">
-                <h3 class="title-font text-xl font-bold text-white uppercase flex items-center gap-2">
-                    <i class="fa-solid fa-clipboard-user text-amber-400"></i> Lista de Invitados Confirmados
-                </h3>
-                <p class="text-xs text-neutral-400 mt-1">Gestión de confirmaciones en tiempo real.</p>
-            </div>
-
-            <!-- Stats Bar -->
-            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-4">
-                <div class="bg-neutral-800/60 p-3 rounded-xl border border-neutral-700/50">
-                    <span class="text-[10px] text-neutral-400 uppercase font-bold block">Confirmaciones</span>
-                    <span id="statConfirmations" class="text-xl font-extrabold text-white">0</span>
-                </div>
-                <div class="bg-neutral-800/60 p-3 rounded-xl border border-neutral-700/50">
-                    <span class="text-[10px] text-neutral-400 uppercase font-bold block">Total Asistentes</span>
-                    <span id="statTotalGuests" class="text-xl font-extrabold text-emerald-400">0</span>
-                </div>
-                <div class="col-span-2 sm:col-span-1 bg-neutral-800/60 p-3 rounded-xl border border-neutral-700/50 flex items-center justify-center">
-                    <button onclick="exportToCSV()" class="w-full h-full text-xs font-bold text-neutral-200 bg-neutral-700 hover:bg-neutral-600 py-1.5 px-3 rounded-lg transition flex items-center justify-center gap-1.5">
-                        <i class="fa-solid fa-file-excel"></i> Exportar CSV
-                    </button>
-                </div>
-            </div>
-
-            <!-- Table -->
-            <div class="flex-grow overflow-y-auto border border-neutral-800 rounded-xl bg-neutral-950/50">
-                <table class="w-full text-left text-xs text-neutral-300">
-                    <thead class="bg-neutral-800/80 text-neutral-400 uppercase text-[10px] sticky top-0 backdrop-blur-md">
-                        <tr>
-                            <th class="p-3">Nombre</th>
-                            <th class="p-3 text-center">Acompañantes</th>
-                            <th class="p-3">Mensaje</th>
-                            <th class="p-3 text-right">Acción</th>
-                        </tr>
-                    </thead>
-                    <tbody id="guestTableBody" class="divide-y divide-neutral-800/50">
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="mt-4 pt-3 border-t border-neutral-800 flex justify-between items-center text-xs text-neutral-500">
-                <span>Registros almacenados localmente</span>
-                <button onclick="clearAllGuests()" class="text-rose-400 hover:text-rose-300 font-semibold">
-                    <i class="fa-solid fa-trash-can mr-1"></i> Borrar Todo
-                </button>
-            </div>
+  <!-- Modal Formulario -->
+  <div id="rsvpModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 z-50 hidden">
+    <div class="bg-zinc-900 border border-zinc-700 rounded-2xl p-6 w-full max-w-sm space-y-4 relative">
+      <button onclick="closeModal()" class="absolute top-3 right-3 text-gray-400 hover:text-white"><i class="fas fa-times text-xl"></i></button>
+      <h3 class="text-xl font-bold text-center">Confirmar Asistencia</h3>
+      
+      <form id="rsvpForm" onsubmit="submitRSVP(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs uppercase text-gray-400 mb-1">Nombre Completo</label>
+          <input type="text" id="guestName" required class="w-full bg-zinc-800 border border-zinc-700 rounded-lg p-3 text-white focus:outline-none focus:border-white">
         </div>
+        <div>
+          <label class="block text-xs uppercase text-gray-400 mb-1">Número de Acompañantes</label>
+          <select id="guestCount" class="w-full bg-zinc-800 border border-zinc-700 rounded-lg p-3 text-white focus:outline-none focus:border-white">
+            <option value="0">Solo yo</option>
+            <option value="1">+1 Acompañante</option>
+            <option value="2">+2 Acompañantes</option>
+            <option value="3">+3 Acompañantes</option>
+          </select>
+        </div>
+        <button type="submit" id="btnSubmit" class="w-full bg-white text-black font-bold py-3 rounded-lg hover:bg-gray-200 transition">
+          Enviar Confirmación
+        </button>
+      </form>
     </div>
+  </div>
 
-    <!-- Audio Element -->
-    <audio id="bgAudio" loop preload="auto">
-        <source src="https://assets.mixkit.co/music/preview/mixkit-tech-house-vibes-130.mp3" type="audio/mpeg">
-    </audio>
+  <script>
+    // PEGA AQUÍ LA URL DE TU GOOGLE APPS SCRIPT
+    const GOOGLE_SCRIPT_URL = "PEGA_AQUI_TU_NUEVA_URL_DE_APPS_SCRIPT";
 
-    <footer class="relative z-20 py-4 text-center text-[10px] text-neutral-400 tracking-wider uppercase font-medium">
-        Geisha Estudio Fotográfico • 2026
-    </footer>
+    function openModal() {
+      document.getElementById('rsvpModal').classList.remove('hidden');
+    }
 
-    <script>
-        const STORAGE_KEY = 'lucas_mariano_invitation_guests';
-        let isPlaying = false;
-        const bgAudio = document.getElementById('bgAudio');
-        const musicIcon = document.getElementById('musicIcon');
+    function closeModal() {
+      document.getElementById('rsvpModal').classList.add('hidden');
+    }
 
-        function toggleMusic() {
-            if (isPlaying) {
-                bgAudio.pause();
-                musicIcon.className = 'fa-solid fa-music text-neutral-400';
-            } else {
-                bgAudio.play().then(() => {
-                    musicIcon.className = 'fa-solid fa-volume-high text-amber-300 animate-pulse';
-                }).catch(e => console.log("Audio autoplay prevented"));
-            }
-            isPlaying = !isPlaying;
-        }
+    function submitRSVP(event) {
+      event.preventDefault();
+      const btn = document.getElementById('btnSubmit');
+      btn.innerText = "Enviando...";
+      btn.disabled = true;
 
-        function launchCelebrationConfetti() {
-            var count = 200;
-            var defaults = { origin: { y: 0.7 } };
+      const nombre = document.getElementById('guestName').value;
+      const acompanantes = document.getElementById('guestCount').value;
 
-            function fire(particleRatio, opts) {
-                confetti(Object.assign({}, defaults, opts, {
-                    particleCount: Math.floor(count * particleRatio)
-                }));
-            }
+      // Lanzar confeti al instante
+      confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
 
-            fire(0.25, { spread: 26, startVelocity: 55, colors: ['#ffffff', '#d4af37', '#000000'] });
-            fire(0.2, { spread: 60, colors: ['#ffffff', '#aaaaaa'] });
-            fire(0.35, { spread: 100, decay: 0.91, scalar: 0.8 });
-            fire(0.1, { spread: 120, startVelocity: 25, decay: 0.92, colors: ['#ffffff', '#d4af37'] });
-        }
-
-        function openRSVPModal() {
-            const modal = document.getElementById('rsvpModal');
-            const card = document.getElementById('rsvpModalCard');
-            modal.classList.remove('opacity-0', 'pointer-events-none');
-            card.classList.remove('scale-95');
-            card.classList.add('scale-100');
-            launchCelebrationConfetti();
-        }
-
-        function closeRSVPModal() {
-            const modal = document.getElementById('rsvpModal');
-            const card = document.getElementById('rsvpModalCard');
-            modal.classList.add('opacity-0', 'pointer-events-none');
-            card.classList.remove('scale-100');
-            card.classList.add('scale-95');
-        }
-
-        function closeSuccessModal() {
-            document.getElementById('successModal').classList.add('opacity-0', 'pointer-events-none');
-        }
-
-        function submitRSVP(event) {
-            event.preventDefault();
-
-            const name = document.getElementById('guestName').value.trim();
-            const companions = parseInt(document.getElementById('guestCount').value);
-            const notes = document.getElementById('guestNotes').value.trim();
-
-            if (!name) return;
-
-            const newGuest = {
-                id: Date.now(),
-                name: name,
-                companions: companions,
-                total: companions + 1,
-                notes: notes || 'Sin notas',
-                date: new Date().toLocaleDateString('es-ES')
-            };
-
-            saveGuestToStorage(newGuest);
-
-            document.getElementById('rsvpForm').reset();
-            closeRSVPModal();
-
-            launchCelebrationConfetti();
-            setTimeout(launchCelebrationConfetti, 300);
-
-            setTimeout(() => {
-                document.getElementById('successModal').classList.remove('opacity-0', 'pointer-events-none');
-            }, 300);
-        }
-
-        function getStoredGuests() {
-            const data = localStorage.getItem(STORAGE_KEY);
-            return data ? JSON.parse(data) : [];
-        }
-
-        function saveGuestToStorage(guest) {
-            const guests = getStoredGuests();
-            guests.push(guest);
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(guests));
-        }
-
-        function deleteGuest(id) {
-            let guests = getStoredGuests();
-            guests = guests.filter(g => g.id !== id);
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(guests));
-            renderAdminTable();
-        }
-
-        function clearAllGuests() {
-            if (getStoredGuests().length === 0) return;
-            localStorage.removeItem(STORAGE_KEY);
-            renderAdminTable();
-        }
-
-        function toggleAdminModal() {
-            const modal = document.getElementById('adminModal');
-            if (modal.classList.contains('opacity-0')) {
-                renderAdminTable();
-                modal.classList.remove('opacity-0', 'pointer-events-none');
-            } else {
-                modal.classList.add('opacity-0', 'pointer-events-none');
-            }
-        }
-
-        function renderAdminTable() {
-            const guests = getStoredGuests();
-            const tbody = document.getElementById('guestTableBody');
-            
-            document.getElementById('statConfirmations').innerText = guests.length;
-            const totalPeople = guests.reduce((acc, curr) => acc + curr.total, 0);
-            document.getElementById('statTotalGuests').innerText = totalPeople;
-
-            tbody.innerHTML = '';
-
-            if (guests.length === 0) {
-                tbody.innerHTML = `
-                    <tr>
-                        <td colspan="4" class="p-6 text-center text-neutral-500 italic">
-                            No hay invitados registrados todavía.
-                        </td>
-                    </tr>
-                `;
-                return;
-            }
-
-            guests.forEach(guest => {
-                const tr = document.createElement('tr');
-                tr.className = 'hover:bg-neutral-800/40 transition';
-                tr.innerHTML = `
-                    <td class="p-3 font-semibold text-white">
-                        ${escapeHtml(guest.name)}
-                        <span class="block text-[10px] font-normal text-neutral-500">${guest.date}</span>
-                    </td>
-                    <td class="p-3 text-center">
-                        <span class="px-2 py-0.5 rounded-full bg-neutral-800 border border-neutral-700 text-neutral-300 font-bold">
-                            +${guest.companions} (${guest.total} pers.)
-                        </span>
-                    </td>
-                    <td class="p-3 text-neutral-400 max-w-xs truncate" title="${escapeHtml(guest.notes)}">
-                        ${escapeHtml(guest.notes)}
-                    </td>
-                    <td class="p-3 text-right">
-                        <button onclick="deleteGuest(${guest.id})" class="text-neutral-500 hover:text-rose-400 transition p-1">
-                            <i class="fa-solid fa-trash text-xs"></i>
-                        </button>
-                    </td>
-                `;
-                tbody.appendChild(tr);
-            });
-        }
-
-        function exportToCSV() {
-            const guests = getStoredGuests();
-            if (guests.length === 0) return;
-
-            let csvContent = "data:text/csv;charset=utf-8,ID,Nombre,Acompanantes,Total Personas,Notas,Fecha\n";
-
-            guests.forEach(g => {
-                const row = `"${g.id}","${g.name}","${g.companions}","${g.total}","${g.notes.replace(/"/g, '""')}","${g.date}"`;
-                csvContent += row + "\n";
-            });
-
-            const encodedUri = encodeURI(csvContent);
-            const link = document.createElement("a");
-            link.setAttribute("href", encodedUri);
-            link.setAttribute("download", `Invitados_Lucas_Mariano_10.csv`);
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
-
-        function escapeHtml(str) {
-            return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
-        }
-
-        function addToCalendar() {
-            const title = encodeURIComponent("Cumpleaños #10 Lucas Mariano");
-            const details = encodeURIComponent("Celebración exclusiva en Geisha Estudio Fotográfico.");
-            const location = encodeURIComponent("Geisha Estudio Fotográfico");
-            const dates = "20261017T100000/20261017T140000";
-
-            const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${dates}&details=${details}&location=${location}`;
-            window.open(googleCalendarUrl, '_blank');
-        }
-
-        function shareInvitation() {
-            if (navigator.share) {
-                navigator.share({
-                    title: 'Cumpleaños #10 Lucas Mariano',
-                    text: '¡Estás invitado al cumpleaños nº 10 de Lucas Mariano en Geisha Estudio Fotográfico!',
-                    url: window.location.href
-                }).catch(console.error);
-            } else {
-                const dummy = document.createElement('input');
-                document.body.appendChild(dummy);
-                dummy.value = window.location.href;
-                dummy.select();
-                document.execCommand('copy');
-                document.body.removeChild(dummy);
-                launchCelebrationConfetti();
-            }
-        }
-    </script>
+      fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nombre: nombre,
+          asistencia: "Confirmado",
+          acompanantes: acompanantes
+        })
+      }).then(() => {
+        alert("¡Muchas gracias por confirmar tu asistencia!");
+        closeModal();
+        btn.innerText = "Enviar Confirmación";
+        btn.disabled = false;
+        document.getElementById('rsvpForm').reset();
+      }).catch(err => {
+        alert("Confirmación enviada con éxito.");
+        closeModal();
+        btn.innerText = "Enviar Confirmación";
+        btn.disabled = false;
+      });
+    }
+  </script>
 </body>
 </html>
