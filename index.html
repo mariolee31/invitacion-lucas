@@ -10,7 +10,6 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Playfair+Display:ital,wght@1,700&display=swap');
     body { font-family: 'Montserrat', sans-serif; background-color: #0d0d0f; color: #ffffff; }
-    .title-font { font-family: 'Playfair Display', serif; }
     .bg-custom-overlay {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       background-image: url('INVITACION.jpg');
@@ -80,7 +79,6 @@
             <option value="0">Solo yo</option>
             <option value="1">+1 Acompañante</option>
             <option value="2">+2 Acompañantes</option>
-            <option value="3">+3 Acompañantes</option>
           </select>
         </div>
         <button type="submit" id="btnSubmit" class="w-full bg-white text-black font-bold py-3 rounded-lg hover:bg-gray-200 transition">
@@ -90,8 +88,21 @@
     </div>
   </div>
 
+  <!-- Modal Personalizado de Agradecimiento (Reemplazo de alerta) -->
+  <div id="customAlertModal" class="fixed inset-0 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 z-50 hidden">
+    <div class="bg-zinc-900 border border-white/20 rounded-2xl p-6 w-full max-w-sm text-center space-y-4 shadow-2xl">
+      <div class="w-12 h-12 bg-white text-black rounded-full flex items-center justify-center mx-auto text-xl">
+        <i class="fas fa-check"></i>
+      </div>
+      <h3 class="text-xl font-black tracking-wider text-white">LUCAS MARIANO</h3>
+      <p class="text-gray-300 text-sm">¡Muchas gracias por confirmar tu asistencia!</p>
+      <button onclick="closeCustomAlert()" class="w-full bg-white text-black font-bold py-3 rounded-xl hover:bg-gray-200 transition shadow">
+        Aceptar
+      </button>
+    </div>
+  </div>
+
   <script>
-    // PEGA AQUÍ LA URL DE TU GOOGLE APPS SCRIPT
     const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxgBk71kOJ8jBVjhdqZl4J_WPynCJv_X8vsxCa0OhPN2hS7g-QI0q9GGP4xXGMaDYgZ9A/exec";
 
     function openModal() {
@@ -100,6 +111,14 @@
 
     function closeModal() {
       document.getElementById('rsvpModal').classList.add('hidden');
+    }
+
+    function showCustomAlert() {
+      document.getElementById('customAlertModal').classList.remove('hidden');
+    }
+
+    function closeCustomAlert() {
+      document.getElementById('customAlertModal').classList.add('hidden');
     }
 
     function submitRSVP(event) {
@@ -111,7 +130,6 @@
       const nombre = document.getElementById('guestName').value;
       const acompanantes = document.getElementById('guestCount').value;
 
-      // Lanzar confeti al instante
       confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
 
       fetch(GOOGLE_SCRIPT_URL, {
@@ -124,14 +142,14 @@
           acompanantes: acompanantes
         })
       }).then(() => {
-        alert("¡Muchas gracias por confirmar tu asistencia!");
         closeModal();
+        showCustomAlert();
         btn.innerText = "Enviar Confirmación";
         btn.disabled = false;
         document.getElementById('rsvpForm').reset();
       }).catch(err => {
-        alert("Confirmación enviada con éxito.");
         closeModal();
+        showCustomAlert();
         btn.innerText = "Enviar Confirmación";
         btn.disabled = false;
       });
