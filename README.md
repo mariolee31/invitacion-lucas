@@ -1,2 +1,0 @@
-# invitacion-lucas
-INVITACION
